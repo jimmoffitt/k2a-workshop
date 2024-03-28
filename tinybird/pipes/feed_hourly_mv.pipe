@@ -1,0 +1,14 @@
+NODE create_mv_with_state
+SQL >
+    SELECT
+        toStartOfHour(timestamp) AS time,
+        symbol,
+        avgState(price) AS price_avg,
+        minState(price) AS price_min,
+        maxState(price) AS price_max,
+        stddevPopState(price) AS price_stddev
+    FROM event_stream
+    GROUP BY symbol, time
+
+TYPE MATERIALIZED
+DATASOURCE hourly_stats_mv
