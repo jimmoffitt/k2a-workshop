@@ -1,3 +1,5 @@
+TOKEN "hourly_stats_endpoint_read_5064" READ
+
 NODE merge_from_mv
 SQL >
     SELECT
